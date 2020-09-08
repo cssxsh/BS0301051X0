@@ -7,6 +7,12 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        @JvmStatic
+        private val COUNT_VALUE = "${this::class.qualifiedName}.COUNT_VALUE"
+    }
+
     private var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +30,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        findViewById<TextView>(R.id.tvCount)?.text = count.toString()
+    }
+    /**
+     * EXP5
+     */
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState.apply { putInt(COUNT_VALUE, count) })
+    }
+    /**
+     * EXP5
+      */
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState.also { count = it.getInt(COUNT_VALUE) })
         findViewById<TextView>(R.id.tvCount)?.text = count.toString()
     }
 }
