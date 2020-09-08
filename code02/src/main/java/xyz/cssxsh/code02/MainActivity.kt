@@ -1,4 +1,4 @@
-package xyz.cssxsh.code2
+package xyz.cssxsh.code02
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

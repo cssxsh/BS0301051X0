@@ -1,4 +1,4 @@
-package xyz.cssxsh.code2
+package xyz.cssxsh.code02
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
