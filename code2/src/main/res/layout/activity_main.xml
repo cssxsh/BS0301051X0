@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/count"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/tvCount"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="160sp"
+        android:textColor="@android:color/primary_text_light"/>
+
+    <Button
+        android:id="@+id/btnShowToast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/show_toast"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
