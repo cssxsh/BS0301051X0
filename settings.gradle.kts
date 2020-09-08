@@ -1,5 +1,6 @@
-rootProject.name = "BS0301051X0"
 include(
-    ":code1",
-    ":code2"
+    ":code01",
+    ":code02",
+    ":code03"
 )
+rootProject.name = "BS0301051X0"
