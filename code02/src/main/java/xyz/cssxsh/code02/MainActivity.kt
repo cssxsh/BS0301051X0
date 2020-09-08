@@ -11,17 +11,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
 
-        findViewById<TextView>(R.id.tvCount).text = count.toString()
-
-        findViewById<Button>(R.id.btnShowToast).setOnClickListener {
+        findViewById<Button>(R.id.btnShowToast)?.setOnClickListener {
             Toast.makeText(this, "Hello World!", Toast.LENGTH_SHORT).show()
         }
 
-        findViewById<Button>(R.id.btnCount).setOnClickListener {
-            findViewById<TextView>(R.id.tvCount).text = (++count).toString()
+        findViewById<Button>(R.id.btnCount)?.setOnClickListener {
+            findViewById<TextView>(R.id.tvCount)?.text = (++count).toString()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        findViewById<TextView>(R.id.tvCount)?.text = count.toString()
     }
 }

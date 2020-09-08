@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Code04</string>
+    <string name="message_hint">Enter a message</string>
+    <string name="send_message">Send Message</string>
+    <string name="message_form_mainactivity">Message form MainActivity</string>
+</resources>
