@@ -2,9 +2,8 @@ package xyz.cssxsh.code02
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,18 +18,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.btnShowToast)?.setOnClickListener {
+        btnShowToast.setOnClickListener {
             Toast.makeText(this, "Hello World!", Toast.LENGTH_SHORT).show()
         }
 
-        findViewById<Button>(R.id.btnCount)?.setOnClickListener {
-            findViewById<TextView>(R.id.tvCount)?.text = (++count).toString()
+        btnCount.setOnClickListener {
+            tvCount.text = (++count).toString()
         }
     }
 
     override fun onStart() {
         super.onStart()
-        findViewById<TextView>(R.id.tvCount)?.text = count.toString()
+        tvCount.text = count.toString()
     }
     /**
      * EXP5
@@ -43,6 +42,6 @@ class MainActivity : AppCompatActivity() {
       */
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState.also { count = it.getInt(COUNT_VALUE) })
-        findViewById<TextView>(R.id.tvCount)?.text = count.toString()
+        tvCount.text = count.toString()
     }
 }
