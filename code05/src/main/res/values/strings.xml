@@ -5,4 +5,6 @@
     <string name="see">See</string>
     <string name="login">Login</string>
     <string name="guet">guet</string>
+    <string name="remember_password">Remember Password</string>
+    <string name="sign_up">Sign up</string>
 </resources>
