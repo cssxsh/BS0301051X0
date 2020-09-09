@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Code05</string>
-    <string name="count">Count</string>
-    <string name="show_toast">Show Toast</string>
+    <string name="email_account">Email/Account</string>
+    <string name="password">Password</string>
+    <string name="see">See</string>
+    <string name="login">Login</string>
+    <string name="guet">guet</string>
 </resources>
