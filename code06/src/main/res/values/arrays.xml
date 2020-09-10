@@ -42,4 +42,25 @@
         <item>Gargi Pant</item>
         <item>Gargi Pant</item>
     </string-array>
+    <string-array name="images">
+        <item>@drawable/img_01</item>
+        <item>@drawable/img_02</item>
+        <item>@drawable/img_03</item>
+        <item>@drawable/img_04</item>
+        <item>@drawable/img_05</item>
+        <item>@drawable/img_06</item>
+        <item>@drawable/img_07</item>
+        <item>@drawable/img_09</item>
+        <item>@drawable/img_08</item>
+        <item>@drawable/img_010</item>
+        <item>@drawable/img_011</item>
+        <item>@drawable/img_012</item>
+        <item>@drawable/img_013</item>
+        <item>@drawable/img_014</item>
+        <item>@drawable/img_015</item>
+        <item>@drawable/img_016</item>
+        <item>@drawable/img_017</item>
+        <item>@drawable/img_018</item>
+        <item>@drawable/img_019</item>
+    </string-array>
 </resources>

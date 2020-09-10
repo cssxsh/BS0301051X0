@@ -1,38 +1,25 @@
 package xyz.cssxsh.code06
 
+import android.content.res.TypedArray
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SimpleAdapter
+import androidx.core.content.res.getResourceIdOrThrow
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        @JvmStatic
-        private val NEWS_TITLE = "news_title"
-
-        @JvmStatic
-        private val NEWS_AUTHOR = "news_author"
-    }
-
     private val dataList by lazy {
         val authors = requireNotNull(resources.getStringArray(R.array.authors))
         val titles = requireNotNull(resources.getStringArray(R.array.titles))
-        titles.mapIndexed { index, title ->
-            mapOf(NEWS_TITLE to title, NEWS_AUTHOR to authors[index])
-        }
+        val images = requireNotNull(resources.obtainTypedArray(R.array.images))
+        (1..17).map { News(mTitle = titles[it], mAuthor = authors[it], mImageId = images.getResourceIdOrThrow(it)) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        lv_news_list.adapter = SimpleAdapter(
-            this,
-            dataList,
-            android.R.layout.simple_list_item_2,
-            arrayOf(NEWS_TITLE, NEWS_AUTHOR),
-            intArrayOf(android.R.id.text1, android.R.id.text2)
-        )
+        lv_news_list.adapter = NewsAdapter(this, R.layout.list_item, dataList)
     }
 }
