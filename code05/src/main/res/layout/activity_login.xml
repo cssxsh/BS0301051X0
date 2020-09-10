@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="xyz.cssxsh.code05.MainActivity">
+    tools:context="xyz.cssxsh.code05.LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -65,7 +65,7 @@
             android:src="@drawable/ic_outline_lock_24" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
@@ -127,6 +127,7 @@
         android:layout_weight="1">
 
         <Button
+            android:id="@+id/bt_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
