@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
+import android.text.SpannableStringBuilder
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -21,8 +22,8 @@ class LoginActivity : AppCompatActivity() {
         val rememberPasswordKey = resources.getString(R.string.login_remember_password)
 
         getSharedPreferences(spFileName, MODE_PRIVATE).let {
-            et_username.setText(it.getString(accountKey, ""))
-            et_password.setText(it.getString(passwordKey, ""))
+            et_username.text = SpannableStringBuilder(it.getString(accountKey, ""))
+            et_password.text = SpannableStringBuilder(it.getString(passwordKey, ""))
             cb_remember.isChecked = it.getBoolean(rememberPasswordKey, false)
         }
 
