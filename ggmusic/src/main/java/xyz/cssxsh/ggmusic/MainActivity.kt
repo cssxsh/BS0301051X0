@@ -67,5 +67,5 @@ class MainActivity : AppCompatActivity() {
     )?.also { cursor ->
         mCursorAdapter.swapCursor(cursor)
         mCursorAdapter.notifyDataSetChanged()
-    }?.close()
+    }
 }

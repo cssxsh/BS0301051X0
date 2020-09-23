@@ -15,9 +15,7 @@ class MediaCursorAdapter(
 
     private val mLayoutInflater: LayoutInflater = LayoutInflater.from(mConText)
 
-    private val unknownText: String by lazy {
-        mConText.resources.getString(R.string.unknown)
-    }
+    private val unknownText: String = mConText.resources.getString(R.string.unknown)
 
     override fun newView(context: Context?, cursor: Cursor?, parent: ViewGroup?): View? =
         mLayoutInflater.inflate(R.layout.list_item, parent, false)?.apply {
