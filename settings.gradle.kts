@@ -4,6 +4,8 @@ include(
     ":code03",
     ":code04",
     ":code05",
-    ":code06"
+    ":code06",
+    ":code07",
+    ":ggmusic"
 )
 rootProject.name = "BS0301051X0"
