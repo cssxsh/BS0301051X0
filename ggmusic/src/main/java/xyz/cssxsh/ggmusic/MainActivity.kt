@@ -2,6 +2,7 @@ package xyz.cssxsh.ggmusic
 
 import android.Manifest
 import android.content.ContentUris
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.net.Uri
@@ -24,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         MediaCursorAdapter(this)
     }
 
-    private var mMediaPlayer: MediaPlayer? = null
-
     companion object {
         const val REQUEST_EXTERNAL_STORAGE = 1
         val PERMISSION_STORAGE = arrayOf(
@@ -38,6 +37,9 @@ class MainActivity : AppCompatActivity() {
             (1).toString(),
             "audio/mpeg"
         )
+        val DATA_URI = "${this::class.qualifiedName}.DATA_URI"
+        val TITLE = "${this::class.qualifiedName}.TITLE"
+        val ARTIST = "${this::class.qualifiedName}.ARTIST"
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -61,22 +63,6 @@ class MainActivity : AppCompatActivity() {
             lv_playlist.onItemClickListener = onItemClickListener
             it.visibility = View.GONE
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (mMediaPlayer == null) {
-            mMediaPlayer = MediaPlayer()
-        }
-    }
-
-    override fun onStop() {
-        mMediaPlayer?.apply {
-            stop()
-            release()
-        }
-        mMediaPlayer = null
-        super.onStop()
     }
 
     override fun onRequestPermissionsResult(
@@ -107,18 +93,19 @@ class MainActivity : AppCompatActivity() {
     private val onItemClickListener = OnItemClickListener { _, _, position, _ ->
         Log.d(null, "sss")
         mCursorAdapter.cursor.takeIf { it.moveToPosition(position) }?.apply {
-            mMediaPlayer?.runCatching {
-                reset()
-                setDataSource(this@MainActivity, Uri.parse(getString(getColumnIndex(MediaStore.Audio.Media.DATA))))
-                prepare()
-                start()
-            }?.onFailure {
-                Log.getStackTraceString(it)
-            }
+            val data = getString(getColumnIndex(MediaStore.Audio.Media.DATA))
+            val title = getString(getColumnIndex(MediaStore.Audio.Media.TITLE))
+            val artist = getString(getColumnIndex(MediaStore.Audio.Media.ARTIST))
+            startService(Intent(this@MainActivity, MusicService::class.java).apply {
+                putExtra(DATA_URI, data)
+                putExtra(TITLE, title)
+                putExtra(ARTIST, artist)
+            })
+
             nav_view.apply {
                 visibility = View.VISIBLE
-                tv_bottom_title.text = getString(getColumnIndex(MediaStore.Audio.Media.TITLE))
-                tv_bottom_artist.text = getString(getColumnIndex(MediaStore.Audio.Media.ARTIST))
+                tv_bottom_title.text = title
+                tv_bottom_artist.text = artist
                 ContentUris.withAppendedId(
                     MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI,
                     getLong(getColumnIndex(MediaStore.Audio.Media.ALBUM_ID))
